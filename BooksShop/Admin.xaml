@@ -1,0 +1,24 @@
+﻿<Window x:Class="BooksShop.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BooksShop"
+        mc:Ignorable="d"
+        Title="Admin" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Grid Background="Lavender">
+        <TextBlock Text="Администратор" FontSize="30" Margin="0,0,0,216" Background="#FFFDFDFD" TextAlignment="Center"/>
+        <Button x:Name="RedEmp" Content="Редактировать &#xD;&#xA;  сотрудников" Margin="235,124,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black" 
+            Width="118" Height="38" Click="RedEmp_Click" FontWeight="Bold"/>
+        <Button x:Name="RedOrd" Content="Редактировать &#xD;&#xA;     клиентов" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+            FontWeight="Bold" Width="118" Height="38" Click="RedOrd_Click"/>
+        <Button x:Name="Exit" Content="Выйти" Margin="296,239,0,0" FontSize="12" Background="#FFFF9595" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top"
+            FontWeight="Bold" Width="88" Height="22" Click="Exit_Click"/>
+        <Button x:Name="zak" Content="Просмотреть все заказы" HorizontalAlignment="Left" Margin="93,182,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+            FontWeight="Bold" Width="200" Height="34"  RenderTransformOrigin="0.88,0.574" Click="zak_Click"/>
+
+    </Grid>
+</Window>

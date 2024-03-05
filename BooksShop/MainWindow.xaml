@@ -1,0 +1,32 @@
+﻿<Window x:Class="BooksShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BooksShop"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Grid Background="Lavender">
+
+        <TextBlock Text="Вход" FontSize="30" Margin="94,0,94,216" Width="206" Background="#FFFDFDFD" TextAlignment="Center"/>
+        <Button x:Name="cass" Visibility="Visible" Content="Кассир" HorizontalAlignment="Left" Margin="235,124,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+            FontWeight="Bold" Width="118" Height="38"  RenderTransformOrigin="0.88,0.574" Click="cass_Click"/>
+        <Button x:Name="him" Visibility="Visible" Content="Администратор" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+            FontWeight="Bold" Width="118" Height="38"  RenderTransformOrigin="0.88,0.574" Click="him_Click"/>
+
+        <TextBlock Name="TBlog" Visibility="Hidden" Text="Логин" FontSize="20" Margin="94,60,94,175" Width="206" Background="#FFFDFDFD" TextAlignment="Center"/>
+        <TextBlock Name="TBpas" Visibility="Hidden" Text="Пароль" FontSize="20" Margin="94,139,94,96" Width="206" Background="#FFFDFDFD" TextAlignment="Center"/>
+        <TextBox Name="Tlog" Visibility="Hidden" PreviewTextInput="inlog" MaxLines="1" MaxLength="3" Margin="94,96,94,137" BorderBrush="Black"/>
+        <PasswordBox Name="Tpas" PreviewTextInput="inpass" Visibility="Hidden" MaxLength="2" Margin="94,175,94,58" BorderBrush="Black"/>
+        <Button x:Name="INcass" Visibility="Hidden" Content="Войти как кассир" HorizontalAlignment="Left" Margin="130,218,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+            FontWeight="Bold" Width="131" Height="24"  RenderTransformOrigin="0.88,0.574" Click="INcass_Click"/>
+        <Button x:Name="INspec" Visibility="Hidden" Content="Войти как администратор" HorizontalAlignment="Left" Margin="115,218,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+            FontWeight="Bold" Width="160" Height="24"  RenderTransformOrigin="0.88,0.574" Click="INspec_Click"/>
+        <Button x:Name="Exit" Visibility="Hidden" Content="Отмена" Margin="296,239,0,0" FontSize="12" Background="#FFFF9595" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top"
+            FontWeight="Bold" Width="88" Height="22" Click="Exit_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,45 @@
+﻿<Window x:Class="BooksShop.AllOrders"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BooksShop"
+        mc:Ignorable="d"
+        Title="AllOrders" Height="450" Width="900"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+>
+
+    <Grid>
+        <Image  x:Name="Background"  Source="/ImageBooks/books1.jpg" Stretch="Fill" Opacity="0.7"/>
+        <ListView x:Name="listzakaz" Margin="0,0,0,10" BorderBrush="DimGray" Foreground="Black" FontSize="12">
+            <ListView.Background>
+                <SolidColorBrush Color="White" Opacity="0.7"/>
+            </ListView.Background>
+
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding O_ID}" Header="№" Width="30"/>
+                    <GridViewColumn Header="Клиент" Width="140">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding CU_SURNAME}" Margin="0,0,5,0"/>
+                                    <TextBlock Text="{Binding CU_NAME}" Margin="0,0,5,0"/>
+                                    <TextBlock Text="{Binding CU_PARTONYMIC}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding CU_TELEPHONE}" Header="Телефон" Width="90"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding T_TITLE}" Header="Тип книги" Width="140"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding B_NAME}" Header="Название книги" Width="160"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding O_COUNT}" Header="Количество" Width="80"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding O_DATE}" Header="Дата заказа" Width="130"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding O_SUM }" Header="Стоимость (Руб.)" Width="100"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

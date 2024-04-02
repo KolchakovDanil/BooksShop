@@ -30,7 +30,9 @@ namespace BooksShop
 
         private void CSzak_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+            string connectionString = ClassSql.GetConnSQL();
+            SqlConnection conn = new SqlConnection(connectionString);
+
             conn.Open();
             string sql = "select CU_SURNAME from Customer where CU_ID  = '" + CSzak.SelectedItem + "'";
             SqlCommand Sqlcmd = new SqlCommand(sql, conn);
@@ -54,7 +56,7 @@ namespace BooksShop
         public void vivodID()
         {
             CSzak.Items.Clear();
-            string connectionString = @"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True";
+            string connectionString = ClassSql.GetConnSQL();
             string query = "SELECT CU_ID FROM Customer";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -82,7 +84,9 @@ namespace BooksShop
             else
             {
                 CSzak.SelectedIndex = -1;
-                SqlConnection conn6 = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+                string connectionString = ClassSql.GetConnSQL();
+                SqlConnection conn6 = new SqlConnection(connectionString);
+
                 try
                 {
                     conn6.Open();
@@ -177,7 +181,9 @@ namespace BooksShop
                 }
                 else
                 {
-                    SqlConnection savezak = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+                    string connectionString = ClassSql.GetConnSQL();
+                    SqlConnection savezak = new SqlConnection(connectionString);
+
                     try
                     {
                         savezak.Open();
@@ -210,7 +216,7 @@ namespace BooksShop
             }
             else
             {
-                string connectionString = @"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True";
+                string connectionString = ClassSql.GetConnSQL();
                 string query = "DELETE FROM Customer WHERE CU_ID = @CustomerId";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))

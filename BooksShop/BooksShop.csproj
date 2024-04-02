@@ -98,6 +98,7 @@
     <Compile Include="Cashier.xaml.cs">
       <DependentUpon>Cashier.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ClassSql.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -134,6 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="arrow_undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageBooks\LogoBack.png" />
+    <Resource Include="ImageBooks\LogoNoBack.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

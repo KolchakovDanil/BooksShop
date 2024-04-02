@@ -29,7 +29,8 @@ namespace BooksShop
         static DataTable ExecuteSql(string sql)
         {
             DataTable DT = new DataTable();
-            SqlConnection sqlcon = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+            string connectionString = ClassSql.GetConnSQL();
+            SqlConnection sqlcon = new SqlConnection(connectionString);
             using (sqlcon)
             {
                 sqlcon.Open();

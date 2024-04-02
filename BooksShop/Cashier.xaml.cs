@@ -35,7 +35,9 @@ namespace BooksShop
 
         private void CSzak_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+            string connectionString = ClassSql.GetConnSQL();
+            SqlConnection conn = new SqlConnection(connectionString);
+
             conn.Open();
             string sql = "select CU_SURNAME from Customer inner join Orderr on O_CU = CU_ID where O_ID  = '" + CSzak.SelectedItem + "'";
             SqlCommand Sqlcmd = new SqlCommand(sql, conn);
@@ -80,7 +82,7 @@ namespace BooksShop
         public void vivodID()
         {
             CSzak.Items.Clear();
-            string connectionString = @"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True";
+            string connectionString = ClassSql.GetConnSQL();
             string query = "SELECT O_ID FROM Orderr";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -100,7 +102,9 @@ namespace BooksShop
         }
         public void VobrPokaz()
         {
-            SqlConnection conn3 = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+            string connectionString = ClassSql.GetConnSQL();
+            SqlConnection conn3 = new SqlConnection(connectionString);
+
             Vobr.Items.Clear();
             conn3.Open();
             for (int i = 0; i < 100; i++)
@@ -133,7 +137,9 @@ namespace BooksShop
             else
             {
                 CSzak.SelectedIndex = -1;
-                SqlConnection conn6 = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+                string connectionString = ClassSql.GetConnSQL();
+                SqlConnection conn6 = new SqlConnection(connectionString);
+
                 try
                 {
                     conn6.Open();
@@ -178,7 +184,9 @@ namespace BooksShop
             }
             else
             {
-                SqlConnection conn4 = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+                string connectionString = ClassSql.GetConnSQL();
+                SqlConnection conn4 = new SqlConnection(connectionString);
+
                 try
                 {
                     int count1 = Convert.ToInt32(count.Text);
@@ -304,7 +312,9 @@ namespace BooksShop
                 }
                 else
                 {
-                    SqlConnection savezak = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+                    string connectionString = ClassSql.GetConnSQL();
+                    SqlConnection savezak = new SqlConnection(connectionString);
+
                     try
                     {
                         savezak.Open();
@@ -354,7 +364,7 @@ namespace BooksShop
             }
             else
             {
-                string connectionString = @"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True";
+                string connectionString = ClassSql.GetConnSQL();
                 string query = "DELETE FROM Orderr WHERE O_ID = @OrderId";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -384,7 +394,7 @@ namespace BooksShop
         {
             Vode.IsEnabled = true;
             Vode.Items.Clear();
-            string connectionString = @"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True";
+            string connectionString = ClassSql.GetConnSQL();
             string query = "SELECT B_NAME FROM TypeBooks INNER JOIN Books ON Books.B_TITLE = TypeBooks.T_ID WHERE T_TITLE = @Title";
 
             using (SqlConnection connection = new SqlConnection(connectionString))

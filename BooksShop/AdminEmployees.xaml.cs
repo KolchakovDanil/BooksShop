@@ -31,7 +31,8 @@ namespace BooksShop
 
         private void CSzak_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SqlConnection conn = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+            string connectionString = ClassSql.GetConnSQL();
+            SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
             string sql = "select E_SURNAME from Employees where E_ID  = '" + CSzak.SelectedItem + "'";
             SqlCommand Sqlcmd = new SqlCommand(sql, conn);
@@ -67,7 +68,8 @@ namespace BooksShop
         public void vivodID()
         {
             CSzak.Items.Clear();
-            string connectionString = @"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True";
+            string connectionString = ClassSql.GetConnSQL();
+
             string query = "SELECT E_ID FROM Employees";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -87,7 +89,7 @@ namespace BooksShop
         }
         public void PostPokaz()
         {
-            string connectionString = @"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True";
+            string connectionString = ClassSql.GetConnSQL();
             string query = "SELECT P_TITLE FROM Employees INNER JOIN Post ON Post.P_ID = Employees.P_ID";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -118,7 +120,8 @@ namespace BooksShop
             else
             {
                 CSzak.SelectedIndex = -1;
-                SqlConnection conn6 = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+                string connectionString = ClassSql.GetConnSQL();
+                SqlConnection conn6 = new SqlConnection(connectionString);
                 try
                 {
                     conn6.Open();
@@ -227,7 +230,8 @@ namespace BooksShop
                 }
                 else
                 {
-                    SqlConnection savezak = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True");
+                    string connectionString = ClassSql.GetConnSQL();
+                    SqlConnection savezak = new SqlConnection(connectionString);
                     try
                     {
                         savezak.Open();
@@ -265,7 +269,7 @@ namespace BooksShop
             }
             else
             {
-                string connectionString = @"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security = True";
+                string connectionString = ClassSql.GetConnSQL();
                 string query = "DELETE FROM Employees WHERE E_ID = @EmployeesId";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))

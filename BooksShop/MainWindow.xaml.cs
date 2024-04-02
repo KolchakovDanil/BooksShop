@@ -26,7 +26,8 @@ namespace BooksShop
         }
         private void INspec_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security =True");
+            string connectionString = ClassSql.GetConnSQL();
+            SqlConnection sqlcon = new SqlConnection(connectionString); 
             try
             {
                 if (sqlcon.State == ConnectionState.Closed) sqlcon.Open();
@@ -61,7 +62,8 @@ namespace BooksShop
 
         private void INcass_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection sqlcon = new SqlConnection(@"Data Source = DESKTOP-MJM6IQP\SQLEXPRESS; Initial Catalog = BookShop; Integrated Security =True");
+            string connectionString = ClassSql.GetConnSQL();
+            SqlConnection sqlcon = new SqlConnection(connectionString);
             try
             {
                 if (sqlcon.State == ConnectionState.Closed) sqlcon.Open();

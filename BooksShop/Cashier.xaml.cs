@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
 using System.Data;
+using System.IO;
 
 namespace BooksShop
 {
@@ -55,6 +56,10 @@ namespace BooksShop
             SqlCommand Sqlcmd2 = new SqlCommand(sql2, conn);
             phone.Text = Convert.ToString(Sqlcmd2.ExecuteScalar());
 
+            string sql22 = "select CU_EMAIL from Customer inner join Orderr on O_CU = CU_ID where O_ID  ='" + CSzak.SelectedItem + "'";
+            SqlCommand Sqlcmd22 = new SqlCommand(sql22, conn);
+            email.Text = Convert.ToString(Sqlcmd22.ExecuteScalar());
+
             string sql3 = "select T_TITLE from Orderr inner join TypeBooks on Orderr.T_ID = TypeBooks.T_ID where O_ID ='" + CSzak.SelectedItem + "'";
             SqlCommand Sqlcmd3 = new SqlCommand(sql3, conn);
             Vobr.SelectedItem = Convert.ToString(Sqlcmd3.ExecuteScalar());
@@ -63,10 +68,13 @@ namespace BooksShop
             SqlCommand Sqlcmd4 = new SqlCommand(sql4, conn);
             Vode.SelectedItem = Convert.ToString(Sqlcmd4.ExecuteScalar());
 
+            string sql44 = "select B_INFO from Orderr inner join Books on Orderr.B_ID = Books.B_ID where O_ID ='" + CSzak.SelectedItem + "'";
+            SqlCommand Sqlcmd44 = new SqlCommand(sql44, conn);
+            info.Text = Convert.ToString(Sqlcmd44.ExecuteScalar());
+
             string sql5 = "select O_DATE from Orderr where O_ID  ='" + CSzak.SelectedItem + "'";
             SqlCommand Sqlcmd5 = new SqlCommand(sql5, conn);
             date.Text = Convert.ToString(Sqlcmd5.ExecuteScalar());
-            //date.IsEnabled = false;
 
             string sql6 = "select O_SUM from Orderr where O_ID  ='" + CSzak.SelectedItem + "'";
             SqlCommand Sqlcmd6 = new SqlCommand(sql6, conn);
@@ -130,7 +138,7 @@ namespace BooksShop
 
         private void Ofzakaz_Click(object sender, RoutedEventArgs e)
         {
-            if (Sur.Text == "" || Name.Text == "" || FIO.Text == "" || phone.Text == "" || date.SelectedDate == null || Vobr.SelectedIndex == -1 || Vode.SelectedIndex == -1 || count.Text == null || sum.Text == "")
+            if (Sur.Text == "" || Name.Text == "" || FIO.Text == "" || phone.Text == "" || date.SelectedDate == null || Vobr.SelectedIndex == -1 || Vode.SelectedIndex == -1 || count.Text == null || sum.Text == "" || info.Text == "" || email.Text == "")
             {
                 MessageBox.Show("Вы не заполнили все данные");
             }
@@ -143,7 +151,7 @@ namespace BooksShop
                 try
                 {
                     conn6.Open();
-                    string cmdit = "Insert into Customer (CU_SURNAME,CU_NAME,CU_PARTONYMIC,CU_TELEPHONE) values ('" + Sur.Text + "','" + Name.Text + "','" + FIO.Text + "','" + phone.Text + "')";
+                    string cmdit = "Insert into Customer (CU_SURNAME,CU_NAME,CU_PARTONYMIC,CU_TELEPHONE,CU_EMAIL) values ('" + Sur.Text + "','" + Name.Text + "','" + FIO.Text + "','" + phone.Text + "','" + email.Text + "')";
                     SqlCommand cmd = new SqlCommand(cmdit, conn6); cmd.ExecuteNonQuery();
 
                     string std = "select Top 1 CU_ID from Customer order by CU_ID desc";
@@ -163,6 +171,19 @@ namespace BooksShop
                     conn6.Close();
 
                     MessageBox.Show("Заказ успешно оформлен");
+
+                    Sur.Clear();
+                    Name.Clear();
+                    FIO.Clear();
+                    phone.Clear();
+                    date.SelectedDate = null;
+                    Vobr.SelectedIndex = -1;
+                    Vode.SelectedIndex = -1;
+                    count.Clear();
+                    sum.Clear();
+                    email.Clear();
+                    info.Clear();
+                    imageBook.Source = null;
                 }
                 catch (Exception ex)
                 {
@@ -213,39 +234,24 @@ namespace BooksShop
                 }
             }
         }
-
-        private void insur(object sender, TextCompositionEventArgs e)
+        private void inRus(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^а-яА-Я]");
             e.Handled = regex.IsMatch(e.Text);
         }
-
-        private void inname(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^а-яА-Я]");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void inpatr(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^а-яА-Я]");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void inphone(object sender, TextCompositionEventArgs e)
+        private void inNumber(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]");
             e.Handled = regex.IsMatch(e.Text);
         }
-
-        private void incount(object sender, TextCompositionEventArgs e)
+        private void inNoRus(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]");
-            e.Handled = regex.IsMatch(e.Text);
+            Regex regex = new Regex("[^а-яА-Я]");
+            e.Handled = !regex.IsMatch(e.Text);
         }
-
         private void Rzak_Click(object sender, RoutedEventArgs e)
         {
+            imageBook.Source = null;
             Rzak.Visibility = Visibility.Hidden;
             Ofzakaz.Visibility = Visibility.Hidden;
             TBsz.Visibility = Visibility.Hidden;
@@ -262,17 +268,20 @@ namespace BooksShop
             FIO.Clear();
             phone.Clear();
             date.SelectedDate = null;
+            Vobr.SelectedIndex = -1;
+            Vode.SelectedIndex = -1;
             count.Clear();
             sum.Clear();
-            CSzak.Items.Clear();
-            Vobr.Items.Clear();
-            Vode.Items.Clear();
+            email.Clear();
+            info.Clear();
+            imageBook.Source = null;
             vivodID();
             VobrPokaz();
         }
 
         private void Ozak_Click(object sender, RoutedEventArgs e)
         {
+            imageBook.Source = null;
             Rzak.Visibility = Visibility.Visible;
             Ofzakaz.Visibility = Visibility.Visible;
             TBsz.Visibility = Visibility.Visible;
@@ -289,11 +298,13 @@ namespace BooksShop
             FIO.Clear();
             phone.Clear();
             date.SelectedDate = null;
+            Vobr.SelectedIndex = -1;
+            Vode.SelectedIndex = -1;
             count.Clear();
             sum.Clear();
-            CSzak.Items.Clear();
-            Vobr.Items.Clear();
-            Vode.Items.Clear();
+            email.Clear();
+            info.Clear();
+            imageBook.Source = null;
             vivodID();
             VobrPokaz();
         }
@@ -306,7 +317,7 @@ namespace BooksShop
             }
             else
             {
-                if (Sur.Text == "" || Name.Text == "" || FIO.Text == "" || phone.Text == "" || date.SelectedDate == null || Vobr.SelectedIndex == -1 || Vode.SelectedIndex == -1 || count.Text == null || sum.Text == "")
+                if (Sur.Text == "" || Name.Text == "" || FIO.Text == "" || phone.Text == "" || date.SelectedDate == null || Vobr.SelectedIndex == -1 || Vode.SelectedIndex == -1 || count.Text == null || sum.Text == "" || info.Text == "" || email.Text == "")
                 {
                     MessageBox.Show("Вы не заполнили все данные");
                 }
@@ -333,13 +344,14 @@ namespace BooksShop
                         string savezakaz = "Update Orderr set T_ID = '" + saveVobr + "', B_ID = '" + saveVode + "', O_TELEPHONE = '" + phone.Text + "', O_COUNT = '" + count.Text + "', O_DATE = '" + date.SelectedDate + "', O_SUM = '" + sum.Text + "' where O_ID =" + CSzak.SelectedItem;
                         SqlCommand sz = new SqlCommand(savezakaz, savezak); sz.ExecuteNonQuery();
 
-                        string saveklient2 = "Update Customer set CU_Surname = '" + Sur.Text + "', CU_Name = '" + Name.Text + "', CU_Partonymic = '" + FIO.Text + "', CU_TELEPHONE = '" + phone.Text + "' where CU_ID =" + save5;
+                        string saveklient2 = "Update Customer set CU_Surname = '" + Sur.Text + "', CU_Name = '" + Name.Text + "', CU_Partonymic = '" + FIO.Text + "', CU_TELEPHONE = '" + phone.Text + "', CU_EMAIL = '" + email.Text + "' where CU_ID =" + save5;
                         SqlCommand sk = new SqlCommand(saveklient2, savezak); sk.ExecuteNonQuery();
 
                         savezak.Close();
                         CSzak.SelectedIndex = -1;
                         Vobr.SelectedIndex = -1;
                         Vode.SelectedIndex = -1;
+                        imageBook.Source = null;
                         vivodID();
                         MessageBox.Show("Данные обновлены");
                     }
@@ -379,6 +391,7 @@ namespace BooksShop
                         CSzak.SelectedIndex = -1;
                         Vobr.SelectedIndex = -1;
                         Vode.SelectedIndex = -1;
+                        imageBook.Source = null;
                         vivodID();
                         MessageBox.Show("Заказ удален");
                     }
@@ -420,9 +433,17 @@ namespace BooksShop
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.Show();
-            this.Close();
+            MessageBoxResult result = MessageBox.Show("Вы уверены что хотите выйти из учетной записи?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
+            else if (result == MessageBoxResult.No)
+            {
+
+            }
         }
 
         private void Vode_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -432,6 +453,8 @@ namespace BooksShop
                 string selectedBookName = Vode.SelectedValue.ToString();
                 int selectedBookId = GetBookIdByName(selectedBookName);
                 LoadBookImage(selectedBookId);
+                LoadBookInfo(selectedBookId);
+                sum.Clear();
             }
         }
         private void LoadBookImage(int bookId)
@@ -448,7 +471,9 @@ namespace BooksShop
 
                     if (!string.IsNullOrEmpty(imageUrl))
                     {
-                        imageBook.Source = new BitmapImage(new Uri(imageUrl));
+                        string basePath = AppDomain.CurrentDomain.BaseDirectory;
+                        string imagePath = System.IO.Path.Combine(basePath, imageUrl);
+                        imageBook.Source = new BitmapImage(new Uri(imagePath));
                     }
                     else
                     {
@@ -458,6 +483,34 @@ namespace BooksShop
                 catch (Exception ex)
                 {
                     MessageBox.Show("Ошибка загрузки изображения: " + ex.Message);
+                }
+            }
+        }
+        private void LoadBookInfo(int bookId)
+        {
+            string connectionString = ClassSql.GetConnSQL();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("SELECT B_INFO FROM Books WHERE B_ID = @BookId", connection);
+                    command.Parameters.AddWithValue("@BookId", bookId);
+                    string bookInfo = command.ExecuteScalar()?.ToString();
+
+                    if (!string.IsNullOrEmpty(bookInfo))
+                    {
+                        info.Text = bookInfo;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Описание не найдено для выбранной книги.");
+                        info.Clear();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка загрузки описания: " + ex.Message);
                 }
             }
         }
@@ -484,6 +537,16 @@ namespace BooksShop
                 }
             }
             return bookId;
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result =  MessageBox.Show("Это окно Кассира! Здесь вы можете оформлять заказы для клиентов. Так же вы имеете доступ к просмотру всех созданных заказов" +
+                " и редактировать их. Будте внимательны к заполнению всех данных!", "О программе", MessageBoxButton.OK, MessageBoxImage.Information);
+            if (result == MessageBoxResult.OK)
+            {
+                MessageBox.Show("Не забудьте удостовериться в корректности данных клиента! (номер телефона, адрес электронной почты).", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

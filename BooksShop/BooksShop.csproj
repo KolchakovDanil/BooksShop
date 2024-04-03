@@ -35,8 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicrosoftExpressionInteractions.3.0.40218.0\lib\net45\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -122,6 +128,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,14 +138,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ImageBooks\books1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="arrow_undo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ImageBooks\AI.jpg" />
+    <Resource Include="ImageBooks\astro10_11.jpg" />
+    <Resource Include="ImageBooks\becomeRich.jpg" />
+    <Resource Include="ImageBooks\biology7.jpg" />
+    <Resource Include="ImageBooks\books1.jpg" />
+    <Resource Include="ImageBooks\dunno.jpg" />
+    <Resource Include="ImageBooks\help.png" />
+    <Resource Include="ImageBooks\histori5.jpg" />
+    <Resource Include="ImageBooks\IT5_6.png" />
+    <Resource Include="ImageBooks\littlePrince.jpg" />
     <Resource Include="ImageBooks\LogoBack.png" />
     <Resource Include="ImageBooks\LogoNoBack.png" />
+    <Resource Include="ImageBooks\secretPlace.jpg" />
+    <Resource Include="ImageBooks\sherlokHolms.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="help.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -144,5 +144,12 @@ namespace BooksShop
             INspec.Visibility = Visibility.Hidden;
             Exit.Visibility = Visibility.Hidden;
         }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Эта программа была разработана для автоматизации работы книжного магазина \" BookShop\". " +
+                "Перед собой вы видите главное окно приложения, где вам предстоит авторизоваться в лице сотрудника " +
+                "'Администратор' или 'Кассир'.", "О программе", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

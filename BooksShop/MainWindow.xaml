@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
         xmlns:local="clr-namespace:BooksShop"
         mc:Ignorable="d"
         Title="MainWindow" Height="299.8" Width="400"
@@ -11,7 +12,7 @@
 
     <Grid Background="Lavender">
         <Image  x:Name="Background"  Source="/ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="76,234,258,3" Stretch="UniformToFill"/>
-        <TextBlock Text="Авторизация" FontSize="24" Margin="94,10,94,216" Width="206" Background="#FFFDFDFD" TextAlignment="Center"/>
+        <TextBlock Text="Авторизация" FontSize="24" Margin="0,0,0,216" Background="#FFFDFDFD" TextAlignment="Center" />
         <Button x:Name="cass" Visibility="Visible" Content="Кассир" HorizontalAlignment="Left" Margin="235,124,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
             FontWeight="Bold" Width="118" Height="38"  RenderTransformOrigin="0.88,0.574" Click="cass_Click"/>
         <Button x:Name="him" Visibility="Visible" Content="Администратор" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
@@ -25,8 +26,15 @@
             FontWeight="Bold" Width="131" Height="24"  RenderTransformOrigin="0.88,0.574" Click="INcass_Click"/>
         <Button x:Name="INspec" Visibility="Hidden" Content="Войти как администратор" HorizontalAlignment="Left" Margin="115,213,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
             FontWeight="Bold" Width="160" Height="24"  RenderTransformOrigin="0.88,0.574" Click="INspec_Click"/>
-        <Button x:Name="Exit" Visibility="Hidden" Content="Отмена" Margin="296,214,0,0" FontSize="12" Background="#FFFF9595" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top"
+        <Button x:Name="Exit" Visibility="Hidden" Content="Отмена" Margin="296,239,0,0" FontSize="12" Background="#FFFF9595" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top"
             FontWeight="Bold" Width="88" Height="22" Click="Exit_Click"/>
         <TextBlock FontSize="10" Margin="105,242,104,5" TextAlignment="Center"><Run Text="Тех. поддержка: 8(900)-777-88-99"/></TextBlock>
+        <Button x:Name="btnHelp" Margin="336,2,12,225" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+            </Button.Background>
+
+        </Button>
+        <Image  x:Name="Background_Copy"  Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="-22,-21,287,204" Stretch="UniformToFill"/>
     </Grid>
 </Window>

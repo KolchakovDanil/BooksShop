@@ -9,14 +9,15 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid Background="Lavender">
+        <Image  x:Name="Background"  Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="300,277,303,16" Stretch="UniformToFill"/>
 
-        <TextBox Name="FIO" PreviewTextInput="inpatr" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="45" Margin="325,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
-        <ComboBox Name="Vobr" FontSize="14" HorizontalAlignment="Left" Margin="325,130,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="Vobr_SelectionChanged"/>
+        <TextBox Name="FIO" PreviewTextInput="inRus" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="45" Margin="325,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
+        <ComboBox Name="Vobr" FontSize="14" HorizontalAlignment="Left" Margin="325,178,0,0" VerticalAlignment="Top" Width="170" Height="22" SelectionChanged="Vobr_SelectionChanged"/>
         <DatePicker Name="date" FontSize="14" IsEnabled="True" HorizontalAlignment="Left" Margin="521,130,0,0" Text="" VerticalAlignment="Top" Width="170" Height="27"/>
         <TextBox Name="sum" IsEnabled="False" FontSize="14" HorizontalAlignment="Left" Margin="521,177,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
-        <ComboBox Name="Vode" IsEnabled="False" FontSize="14" HorizontalAlignment="Left" Margin="325,177,0,0" VerticalAlignment="Top" Width="170" Height="22" RenderTransformOrigin="0.488,-0.068" SelectionChanged="Vode_SelectionChanged"/>
-        <TextBox Name="phone" PreviewTextInput="inphone" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="11" Margin="521,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
-        <TextBox Name="count" PreviewTextInput="incount" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="2" Margin="325,224,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="22" RenderTransformOrigin="0.488,-0.068"/>
+        <ComboBox Name="Vode" IsEnabled="False" FontSize="14" HorizontalAlignment="Left" Margin="325,225,0,0" VerticalAlignment="Top" Width="170" Height="22" RenderTransformOrigin="0.488,-0.068" SelectionChanged="Vode_SelectionChanged"/>
+        <TextBox Name="phone" PreviewTextInput="inNumber" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="11" Margin="521,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
+        <TextBox Name="count" PreviewTextInput="inNumber" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="2" Margin="325,272,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Height="22" RenderTransformOrigin="0.488,-0.068"/>
         <ComboBox Name="CSzak" Visibility="Hidden" FontSize="14" Margin="10,81,677,308" SelectionChanged="CSzak_SelectionChanged"/>
 
         <TextBlock HorizontalAlignment="Left" Margin="325,65,0,0" TextWrapping="Wrap" Text="Отчество" 
@@ -27,26 +28,26 @@
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"/>
         <TextBlock HorizontalAlignment="Left" Margin="521,111,0,0" TextWrapping="Wrap" Text="Дата заказа" 
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"/>
-        <TextBlock HorizontalAlignment="Left" Margin="325,157,0,0" TextWrapping="Wrap" 
+        <TextBlock HorizontalAlignment="Left" Margin="325,205,0,0" TextWrapping="Wrap" 
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"><Run Text="Название книги"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="521,157,0,0" TextWrapping="Wrap" Text="Стоимость (Руб.)" 
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"/>
-        <TextBlock HorizontalAlignment="Left" Margin="325,110,0,0" TextWrapping="Wrap" Text="Тип книги" 
+        <TextBlock HorizontalAlignment="Left" Margin="325,158,0,0" TextWrapping="Wrap" Text="Тип книги" 
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13" RenderTransformOrigin="0.508,0.575"/>
         <TextBlock HorizontalAlignment="Left" Margin="521,65,0,0" TextWrapping="Wrap" Text="Телефон" 
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"/>
-        <TextBlock HorizontalAlignment="Left" Margin="325,204,0,0" TextWrapping="Wrap" 
+        <TextBlock HorizontalAlignment="Left" Margin="325,252,0,0" TextWrapping="Wrap" 
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13" Text="Количество одежды"/>
         <TextBlock x:Name="T" Visibility="Hidden" HorizontalAlignment="Left"  Margin="10,12,0,0" TextWrapping="Wrap" Text="Редактирование заказа" 
             VerticalAlignment="Top" Height="41" Width="265" Foreground="Black" FontSize="20" Background="White"/>
-        <Button Name="Bsohr" Content="Сохранить" Visibility="Hidden" HorizontalAlignment="Left" Margin="325,268,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+        <Button Name="Bsohr" Content="Сохранить" Visibility="Hidden" HorizontalAlignment="Left" Margin="569,327,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
                 FontWeight="Bold" Width="75" Height="34" RenderTransformOrigin="0.88,0.574" Click="Bsohr_Click"/>
-        <Button Name="Bdel" Content="Удалить" Visibility="Hidden" HorizontalAlignment="Left" Margin="409,268,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+        <Button Name="Bdel" Content="Удалить" Visibility="Hidden" HorizontalAlignment="Left" Margin="653,327,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
                 FontWeight="Bold" Width="86" Height="34" Click="Bdel_Click"/>
 
         <TextBlock Name="TBsz" Visibility="Visible" HorizontalAlignment="Left"  Margin="10,12,0,0" TextWrapping="Wrap" Text="Создание заказа" 
             VerticalAlignment="Top" Height="41" Width="265" Foreground="Black" FontSize="20" Background="White"/>
-        <Button Name="Ofzakaz" Content="Оформить заказ" Visibility="Visible" HorizontalAlignment="Left" Margin="521,299,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+        <Button Name="Ofzakaz" Content="Оформить заказ" Visibility="Visible" HorizontalAlignment="Left" Margin="568,327,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
                 FontWeight="Bold" Width="139" Height="34" RenderTransformOrigin="0.88,0.574" Click="Ofzakaz_Click"/>
         <Button Name="zak" Content="Просмотреть все заказы" HorizontalAlignment="Left" Margin="25,366,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
             FontWeight="Bold" Width="200" Height="34"  RenderTransformOrigin="0.88,0.574" Click="zak_Click"/>
@@ -56,15 +57,27 @@
             FontWeight="Bold" Width="200" Height="34"  RenderTransformOrigin="0.952,0.667" Click="Rzak_Click"/>
         <Button x:Name="Cina" Content="Посчитать цену заказа" Visibility="Visible" HorizontalAlignment="Left" Margin="521,204,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
             FontWeight="Bold" Width="170" Height="20" RenderTransformOrigin="0.88,0.574" Click="Cina_Click"/>
-        <TextBox x:Name="Sur" PreviewTextInput="insur" FontSize="14" MaxLines="1" MaxLength="45" HorizontalAlignment="Left" Margin="325,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
+        <TextBox x:Name="Sur" PreviewTextInput="inRus" FontSize="14" MaxLines="1" MaxLength="45" HorizontalAlignment="Left" Margin="325,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
         <TextBlock HorizontalAlignment="Left" Margin="325,18,0,0" TextWrapping="Wrap" Text="Фамилия" 
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"/>
-        <TextBox x:Name="Name" PreviewTextInput="inname" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="45" Margin="521,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
+        <TextBox x:Name="Name" PreviewTextInput="inRus" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="45" Margin="521,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
         <TextBlock HorizontalAlignment="Left" Margin="521,18,0,0" TextWrapping="Wrap" Text="Имя" 
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"/>
         <Button x:Name="Exit" Content="Выйти" Margin="357,389,0,0" FontSize="12" Background="#FFFF9595" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top"
             FontWeight="Bold" Width="88" Height="22" Click="Exit_Click"/>
-        <Image x:Name="imageBook" HorizontalAlignment="Left" Height="182" Margin="71,86,0,0" VerticalAlignment="Top" Width="154"/>
+        <Image x:Name="imageBook" HorizontalAlignment="Left" Height="242" Margin="58,110,0,0" VerticalAlignment="Top" Width="204"/>
+        <Button x:Name="btnHelp" Margin="738,9,10,368" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+            </Button.Background>
+
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="521,229,0,0" TextWrapping="Wrap" 
+            VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13" Text="Описание"/>
+        <TextBox x:Name="info" PreviewTextInput="inRus" FontSize="14" HorizontalAlignment="Left" Margin="521,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218" Height="65" RenderTransformOrigin="0.488,-0.068"/>
+        <TextBlock HorizontalAlignment="Left" Margin="325,111,0,0" TextWrapping="Wrap" Text="Почта" 
+            VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"/>
+        <TextBox x:Name="email" PreviewTextInput="inNoRus" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="45" Margin="325,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
 
     </Grid>
 </Window>

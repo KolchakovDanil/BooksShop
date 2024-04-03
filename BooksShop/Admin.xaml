@@ -19,6 +19,12 @@
             FontWeight="Bold" Width="88" Height="22" Click="Exit_Click"/>
         <Button x:Name="zak" Content="Просмотреть все заказы" HorizontalAlignment="Left" Margin="93,182,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
             FontWeight="Bold" Width="200" Height="34"  RenderTransformOrigin="0.88,0.574" Click="zak_Click"/>
+        <Button x:Name="btnHelp" Margin="336,4,12,223" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+            </Button.Background>
 
+        </Button>
+        <Image  x:Name="Background"  Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="-22,-21,287,204" Stretch="UniformToFill"/>
     </Grid>
 </Window>

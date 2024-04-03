@@ -26,8 +26,8 @@ namespace BooksShop
         {
             InitializeComponent();
             vivodID();
+            Rzak_Click(null, null);
         }
-
         private void CSzak_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string connectionString = ClassSql.GetConnSQL();
@@ -49,6 +49,10 @@ namespace BooksShop
             string sql2 = "select CU_TELEPHONE from Customer where CU_ID  ='" + CSzak.SelectedItem + "'";
             SqlCommand Sqlcmd2 = new SqlCommand(sql2, conn);
             phone.Text = Convert.ToString(Sqlcmd2.ExecuteScalar());
+
+            string sql3 = "select CU_EMAIL from Customer where CU_ID  ='" + CSzak.SelectedItem + "'";
+            SqlCommand Sqlcmd3 = new SqlCommand(sql3, conn);
+            email.Text = Convert.ToString(Sqlcmd3.ExecuteScalar());
 
             conn.Close();
         }
@@ -77,7 +81,7 @@ namespace BooksShop
        
         private void Ofzakaz_Click(object sender, RoutedEventArgs e)
         {
-            if (Sur.Text == "" || Name.Text == "" || FIO.Text == "" || phone.Text == "")
+            if (Sur.Text == "" || Name.Text == "" || FIO.Text == "" || phone.Text == "" || email.Text == "")
             {
                 MessageBox.Show("Вы не заполнили все данные");
             }
@@ -90,7 +94,7 @@ namespace BooksShop
                 try
                 {
                     conn6.Open();
-                    string all = "Insert into Customer (CU_SURNAME, CU_NAME, CU_PARTONYMIC, CU_TELEPHONE) values ('" + Sur.Text + "','" + Name.Text + "','" + FIO.Text + "','" + phone.Text + "')";
+                    string all = "Insert into Customer (CU_SURNAME, CU_NAME, CU_PARTONYMIC, CU_TELEPHONE, CU_EMAIL) values ('" + Sur.Text + "','" + Name.Text + "','" + FIO.Text + "','" + phone.Text + "','" + email.Text + "')";
                     SqlCommand alll = new SqlCommand(all, conn6); alll.ExecuteNonQuery();
 
                     conn6.Close();
@@ -108,44 +112,42 @@ namespace BooksShop
             }
         }
 
-        private void insur(object sender, TextCompositionEventArgs e)
+        private void inRusString(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^а-яА-Я]");
             e.Handled = regex.IsMatch(e.Text);
         }
-
-        private void inname(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^а-яА-Я]");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void inpatr(object sender, TextCompositionEventArgs e)
-        {
-            Regex regex = new Regex("[^а-яА-Я]");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void inphone(object sender, TextCompositionEventArgs e)
+        private void inNumber(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]");
             e.Handled = regex.IsMatch(e.Text);
+        }
+        private void inEngString(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        private void inNoRusString(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^а-яА-Я]");
+            e.Handled = !regex.IsMatch(e.Text);
         }
 
         private void Rzak_Click(object sender, RoutedEventArgs e)
         {
             Rzak.Visibility = Visibility.Hidden;
             Ofzakaz.Visibility = Visibility.Hidden;
-            Ozak.Visibility = Visibility.Visible;
+            //Ozak.Visibility = Visibility.Visible;
             CSzak.Visibility = Visibility.Visible;
             TIDzak.Visibility = Visibility.Visible;
             Bsohr.Visibility = Visibility.Visible;
             Bdel.Visibility = Visibility.Visible;
-
+            
             Sur.Clear();
             Name.Clear();
             FIO.Clear();
             phone.Clear();
+            email.Clear();
             CSzak.Items.Clear();
             vivodID();
         }
@@ -163,6 +165,7 @@ namespace BooksShop
             Name.Clear();
             FIO.Clear();
             phone.Clear();
+            email.Clear();
             CSzak.Items.Clear();;
             vivodID();
         }
@@ -175,7 +178,7 @@ namespace BooksShop
             }
             else
             {
-                if (Sur.Text == "" || Name.Text == "" || FIO.Text == "" || phone.Text == "")
+                if (Sur.Text == "" || Name.Text == "" || FIO.Text == "" || phone.Text == "" || email.Text == "")
                 {
                     MessageBox.Show("Вы не заполнили все данные");
                 }
@@ -187,7 +190,7 @@ namespace BooksShop
                     try
                     {
                         savezak.Open();
-                        string savezakaz = "Update Customer set CU_SURNAME = '" + Sur.Text + "', CU_NAME = '" + Name.Text + "', CU_PARTONYMIC = '" + FIO.Text + "', CU_TELEPHONE = '" + phone.Text + "' where CU_ID =" + CSzak.SelectedItem;
+                        string savezakaz = "Update Customer set CU_SURNAME = '" + Sur.Text + "', CU_NAME = '" + Name.Text + "', CU_PARTONYMIC = '" + FIO.Text + "', CU_TELEPHONE = '" + phone.Text + "', CU_EMAIL = '" + email.Text + "' where CU_ID =" + CSzak.SelectedItem;
                         SqlCommand sz = new SqlCommand(savezakaz, savezak); sz.ExecuteNonQuery();
 
                         savezak.Close();

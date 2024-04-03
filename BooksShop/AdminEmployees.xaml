@@ -54,6 +54,7 @@
                 <ImageBrush ImageSource="arrow_undo.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
+        <Image  x:Name="Background"  Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="0,251,589,10" Stretch="UniformToFill"/>
 
     </Grid>
 </Window>

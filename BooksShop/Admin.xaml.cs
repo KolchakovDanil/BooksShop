@@ -40,9 +40,17 @@ namespace BooksShop
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.Show();
-            this.Close();
+            MessageBoxResult result = MessageBox.Show("Вы уверены что хотите выйти из учетной записи?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                MainWindow main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
+            else if (result == MessageBoxResult.No)
+            {
+
+            }
         }
 
         private void zak_Click(object sender, RoutedEventArgs e)
@@ -50,6 +58,11 @@ namespace BooksShop
             AllOrders allor = new AllOrders();
             allor.tableZak();
             allor.Show();
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Это окно Администратора! Здесь вы можете добавлять, изменять и удалять информацию в базе данных.", "О программе", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

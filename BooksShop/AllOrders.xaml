@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BooksShop"
         mc:Ignorable="d"
-        Title="AllOrders" Height="450" Width="900"
+        Title="AllOrders" Height="450" Width="997"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize"
->
-
+        ResizeMode="NoResize">
+    
     <Grid>
         <Image  x:Name="Background"  Source="/ImageBooks/books1.jpg" Stretch="Fill" Opacity="0.7"/>
-        <ListView x:Name="listzakaz" Margin="0,0,0,10" BorderBrush="DimGray" Foreground="Black" FontSize="12">
+        <TextBlock Text="Поиск: " FontSize="16" TextAlignment="Center" Margin="19,369,906,19" Background="White" />
+        <TextBox x:Name="txtSearch" TextChanged="txtSearch_TextChanged" Margin="100,367,100,19" />
+        <ListView x:Name="listzakaz" Margin="0,0,0,63" BorderBrush="DimGray" Foreground="Black" FontSize="12">
             <ListView.Background>
                 <SolidColorBrush Color="White" Opacity="0.7"/>
             </ListView.Background>
-
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding O_ID}" Header="№" Width="30"/>
-                    <GridViewColumn Header="Клиент" Width="140">
+                    <GridViewColumn Header="Клиент" Width="130">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -32,7 +32,18 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding CU_TELEPHONE}" Header="Телефон" Width="90"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding T_TITLE}" Header="Тип книги" Width="140"/>
+                    <GridViewColumn Header="Почта" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding CU_EMAIL}" 
+                                               MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"          
+                                               Foreground="Blue"
+                                               TextDecorations="Underline"
+                                               Cursor="Hand"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding T_TITLE}" Header="Тип книги" Width="130"/>
                     <GridViewColumn DisplayMemberBinding="{Binding B_NAME}" Header="Название книги" Width="160"/>
                     <GridViewColumn DisplayMemberBinding="{Binding O_COUNT}" Header="Количество" Width="80"/>
                     <GridViewColumn DisplayMemberBinding="{Binding O_DATE}" Header="Дата заказа" Width="130"/>
@@ -41,5 +52,13 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="btnHelp" Margin="920,367,10,10" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+            </Button.Background>
+
+        </Button>
+        <Image  x:Name="Background_Copy"  Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="360,384,559,-4" Stretch="UniformToFill"/>
+        <TextBlock FontSize="10" Margin="348,395,361,2" TextAlignment="Center"><Run Text="Тех. поддержка: 8(900)-777-88-99"/></TextBlock>
     </Grid>
 </Window>

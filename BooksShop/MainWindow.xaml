@@ -10,7 +10,7 @@
         ResizeMode="NoResize">
 
     <Grid Background="Lavender">
-        <Image  x:Name="Background"  Source="/ImageBooks/LogoNoBack.png" Opacity="0.7" Stretch="Fill" Margin="83,232,259,2"/>
+        <Image  x:Name="Background"  Source="/ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="76,234,258,3" Stretch="UniformToFill"/>
         <TextBlock Text="Авторизация" FontSize="24" Margin="94,10,94,216" Width="206" Background="#FFFDFDFD" TextAlignment="Center"/>
         <Button x:Name="cass" Visibility="Visible" Content="Кассир" HorizontalAlignment="Left" Margin="235,124,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
             FontWeight="Bold" Width="118" Height="38"  RenderTransformOrigin="0.88,0.574" Click="cass_Click"/>

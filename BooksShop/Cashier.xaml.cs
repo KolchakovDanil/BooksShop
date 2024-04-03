@@ -424,5 +424,66 @@ namespace BooksShop
             main.Show();
             this.Close();
         }
+
+        private void Vode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Vode.SelectedValue != null)
+            {
+                string selectedBookName = Vode.SelectedValue.ToString();
+                int selectedBookId = GetBookIdByName(selectedBookName);
+                LoadBookImage(selectedBookId);
+            }
+        }
+        private void LoadBookImage(int bookId)
+        {
+            string connectionString = ClassSql.GetConnSQL();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("SELECT B_IMAGE FROM Books WHERE B_ID = @BookId", connection);
+                    command.Parameters.AddWithValue("@BookId", bookId);
+                    string imageUrl = command.ExecuteScalar()?.ToString();
+
+                    if (!string.IsNullOrEmpty(imageUrl))
+                    {
+                        imageBook.Source = new BitmapImage(new Uri(imageUrl));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Изображение не найдено для выбранной книги.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка загрузки изображения: " + ex.Message);
+                }
+            }
+        }
+        private int GetBookIdByName(string bookName)
+        {
+            int bookId = 0;
+            string connectionString = ClassSql.GetConnSQL();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("SELECT B_ID FROM Books WHERE B_NAME = @BookName", connection);
+                    command.Parameters.AddWithValue("@BookName", bookName);
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        bookId = Convert.ToInt32(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка получения ID книги: " + ex.Message);
+                }
+            }
+            return bookId;
+        }
     }
 }

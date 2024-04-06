@@ -51,13 +51,13 @@
         <Button x:Name="Back" Content="" Margin="761,4,0,0" FontSize="12" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top"
             FontWeight="Bold" Width="23" Height="22" Click="Back_Click">
             <Button.Background>
-                <ImageBrush ImageSource="arrow_undo.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="ImageBooks\arrow_undo.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <Image  x:Name="Background"  Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="0,251,589,10" Stretch="UniformToFill"/>
         <Button x:Name="btnHelp" Margin="266,13,475,367" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
             <Button.Background>
-                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="ImageBooks\help.png" Stretch="Uniform"/>
             </Button.Background>
 
         </Button>

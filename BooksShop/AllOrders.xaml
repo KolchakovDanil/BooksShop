@@ -54,7 +54,7 @@
         </ListView>
         <Button x:Name="btnHelp" Margin="920,367,10,10" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
             <Button.Background>
-                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="ImageBooks\help.png" Stretch="Uniform"/>
             </Button.Background>
 
         </Button>

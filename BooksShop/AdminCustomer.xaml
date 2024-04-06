@@ -12,7 +12,7 @@
         <Button x:Name="Back" Content="" Margin="761,4,0,0" FontSize="12" BorderThickness="0" HorizontalAlignment="Left" VerticalAlignment="Top"
             FontWeight="Bold" Width="23" Height="22" Click="Back_Click">
             <Button.Background>
-                <ImageBrush ImageSource="arrow_undo.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="ImageBooks\arrow_undo.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <TextBox Name="FIO" PreviewTextInput="inRusString" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="45" Margin="325,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
@@ -51,7 +51,7 @@
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"/>
         <Button x:Name="btnHelp" Margin="237,13,504,367" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
             <Button.Background>
-                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="ImageBooks\help.png" Stretch="Uniform"/>
             </Button.Background>
 
         </Button>

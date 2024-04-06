@@ -152,7 +152,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="arrow_undo.png" />
+    <Resource Include="ImageBooks\arrow_undo.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="ImageBooks\AI.jpg" />
@@ -171,13 +171,10 @@
     <Resource Include="ImageBooks\sherlokHolms.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="help.png" />
+    <Resource Include="ImageBooks\viewEye.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Update.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="UpdateV2.png" />
+    <Resource Include="ImageBooks\UpdateV2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

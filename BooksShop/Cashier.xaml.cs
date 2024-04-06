@@ -15,6 +15,8 @@ using System.Text.RegularExpressions;
 using System.Data.SqlClient;
 using System.Data;
 using System.IO;
+using System.Windows.Controls.Primitives;
+using System.Windows.Media.Animation;
 
 namespace BooksShop
 {
@@ -25,6 +27,7 @@ namespace BooksShop
             InitializeComponent();
             vivodID();
             VobrPokaz();
+            ShowLatestBooksInPopup();
         }
 
         private void zak_Click(object sender, RoutedEventArgs e)
@@ -192,7 +195,6 @@ namespace BooksShop
                 }
             }
         }
-
         private void Cina_Click(object sender, RoutedEventArgs e)
         {
             if (Vode.SelectedIndex == -1 || count.Text == "")
@@ -274,7 +276,6 @@ namespace BooksShop
             vivodID();
             VobrPokaz();
         }
-
         private void Ozak_Click(object sender, RoutedEventArgs e)
         {
             imageBook.Source = null;
@@ -543,6 +544,50 @@ namespace BooksShop
             {
                 MessageBox.Show("Не забудьте удостовериться в корректности данных клиента! (номер телефона, адрес электронной почты).", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void ShowLatestBooksInPopup()
+        {
+            string connectionString = ClassSql.GetConnSQL();
+            string query = "SELECT TOP 3 B_NAME, TypeBooks.T_TITLE FROM Books INNER JOIN TypeBooks ON Books.B_TITLE = TypeBooks.T_ID ORDER BY B_ID DESC";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    StringBuilder popupText = new StringBuilder();
+
+                    popupText.AppendLine("Недавно добавленные книги:");
+                    popupText.AppendLine();
+
+                    while (reader.Read())
+                    {
+                        string bookName = reader["B_NAME"].ToString();
+                        string bookType = reader["T_TITLE"].ToString();
+
+                        popupText.AppendLine($"Название: {bookName}");
+                        popupText.AppendLine($"Тип: {bookType}");
+                        popupText.AppendLine();
+                    }
+
+                    reader.Close();
+
+                    popupTxt.Text = popupText.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при выполнении запроса: " + ex.Message);
+            }
+        }
+
+        private void view_Click(object sender, RoutedEventArgs e)
+        {
+            popup.IsOpen = true;
+            ShowLatestBooksInPopup();
         }
     }
 }

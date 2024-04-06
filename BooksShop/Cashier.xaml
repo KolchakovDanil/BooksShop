@@ -8,6 +8,7 @@
         Title="Окно кассира" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
+
     <Grid Background="Lavender">
         <Image  x:Name="Background"  Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="300,277,303,16" Stretch="UniformToFill"/>
 
@@ -68,7 +69,7 @@
         <Image x:Name="imageBook" HorizontalAlignment="Left" Height="242" Margin="58,110,0,0" VerticalAlignment="Top" Width="204"/>
         <Button x:Name="btnHelp" Margin="738,9,10,368" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
             <Button.Background>
-                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="ImageBooks\help.png" Stretch="Uniform"/>
             </Button.Background>
 
         </Button>
@@ -78,6 +79,17 @@
         <TextBlock HorizontalAlignment="Left" Margin="325,111,0,0" TextWrapping="Wrap" Text="Почта" 
             VerticalAlignment="Top" Height="20" Width="120" Foreground="Black" FontSize="13"/>
         <TextBox x:Name="email" PreviewTextInput="inNoRus" FontSize="14" HorizontalAlignment="Left" MaxLines="1" MaxLength="45" Margin="325,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="170" Height="22"/>
+
+        <Popup x:Name="popup" PlacementTarget="{Binding ElementName=TBsz}" Placement="Bottom" IsOpen="True" StaysOpen="False">
+            <Border BorderBrush="Black" BorderThickness="1" Background="White" Width="200" Height="190">
+                <TextBlock Name="popupTxt" Text="Ваш текст здесь" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+        </Popup>
+        <Button x:Name="view" Margin="230,53,519,337" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="view_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="ImageBooks\viewEye.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

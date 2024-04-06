@@ -21,7 +21,7 @@
             FontWeight="Bold" Width="200" Height="34"  RenderTransformOrigin="0.517,0.529" Click="zak_Click"/>
         <Button x:Name="btnHelp" Margin="418,0,10,219" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
             <Button.Background>
-                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="ImageBooks\help.png" Stretch="Uniform"/>
             </Button.Background>
 
         </Button>

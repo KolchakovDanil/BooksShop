@@ -238,7 +238,8 @@ namespace BooksShop
                     }
                     catch (SqlException ex)
                     {
-                        MessageBox.Show("SQL Error: " + ex.Message);
+                        //MessageBox.Show("SQL Error: " + ex.Message);
+                        MessageBox.Show("Нельзя удалить клиента, который всё еще учавствует в совершенном заказе!");
                     }
                 }
             }
@@ -248,6 +249,12 @@ namespace BooksShop
             Admin admin = new Admin();
             admin.Show();
             this.Close();
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("В данном окне происходит изменение и удаление данных о клиентах. Важно знать, что нельзя удалить клиента," +
+                " если он всё еще учавствует в совершенном заказе! Если заказ был совершен ошибочно, то удалите сначала заказ!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

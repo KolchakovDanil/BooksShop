@@ -5,26 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BooksShop"
         mc:Ignorable="d"
-        Title="Admin" Height="300" Width="400"
+        Title="Окно администратора" Height="300" Width="500"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
 
     <Grid Background="Lavender">
         <TextBlock Text="Администратор" FontSize="30" Margin="0,0,0,216" Background="#FFFDFDFD" TextAlignment="Center"/>
-        <Button x:Name="RedEmp" Content="Редактировать &#xD;&#xA;  сотрудников" Margin="235,124,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black" 
+        <Button x:Name="RedEmp" Content="Редактировать &#xD;&#xA;  сотрудников" Margin="192,120,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black" 
             Width="118" Height="38" Click="RedEmp_Click" FontWeight="Bold"/>
-        <Button x:Name="RedOrd" Content="Редактировать &#xD;&#xA;     клиентов" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+        <Button x:Name="RedOrd" Content="Редактировать &#xD;&#xA;     клиентов" HorizontalAlignment="Left" Margin="28,120,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
             FontWeight="Bold" Width="118" Height="38" Click="RedOrd_Click"/>
-        <Button x:Name="Exit" Content="Выйти" Margin="296,239,0,0" FontSize="12" Background="#FFFF9595" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top"
+        <Button x:Name="Exit" Content="Выйти" Margin="396,239,0,0" FontSize="12" Background="#FFFF9595" BorderBrush="Black" HorizontalAlignment="Left" VerticalAlignment="Top"
             FontWeight="Bold" Width="88" Height="22" Click="Exit_Click"/>
-        <Button x:Name="zak" Content="Просмотреть все заказы" HorizontalAlignment="Left" Margin="93,182,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
-            FontWeight="Bold" Width="200" Height="34"  RenderTransformOrigin="0.88,0.574" Click="zak_Click"/>
-        <Button x:Name="btnHelp" Margin="336,4,12,223" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
+        <Button x:Name="zak" Content="Просмотреть все заказы" HorizontalAlignment="Left" Margin="153,186,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
+            FontWeight="Bold" Width="200" Height="34"  RenderTransformOrigin="0.517,0.529" Click="zak_Click"/>
+        <Button x:Name="btnHelp" Margin="418,0,10,219" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
             <Button.Background>
                 <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
             </Button.Background>
 
         </Button>
-        <Image  x:Name="Background"  Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="-22,-21,287,204" Stretch="UniformToFill"/>
+        <Image  x:Name="Background" Width="129" Height="88" Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="-22,-21,287,204" Stretch="UniformToFill"/>
+        <Button x:Name="RedTovar" Content="Редактировать &#xA;       товары" Margin="358,120,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black" 
+            Width="118" Height="38" Click="RedTovar_Click" FontWeight="Bold"/>
     </Grid>
 </Window>

@@ -61,6 +61,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="addTypeBooks.xaml.cs">
+      <DependentUpon>addTypeBooks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tovari.xaml.cs">
+      <DependentUpon>Tovari.xaml</DependentUpon>
+    </Compile>
+    <Page Include="addTypeBooks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,6 +119,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Tovari.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -158,6 +172,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="UpdateV2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

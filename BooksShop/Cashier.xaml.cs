@@ -111,29 +111,25 @@ namespace BooksShop
         public void VobrPokaz()
         {
             string connectionString = ClassSql.GetConnSQL();
-            SqlConnection conn3 = new SqlConnection(connectionString);
-
-            Vobr.Items.Clear();
-            conn3.Open();
-            for (int i = 0; i < 100; i++)
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string id = "select T_TITLE from TypeBooks where T_ID =" + i;
-                SqlCommand id2 = new SqlCommand(id, conn3);
-                string Vobr13 = Convert.ToString(id2.ExecuteScalar());
-                if (Vobr13 == "") { }
-                else
+                Vobr.Items.Clear();
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT T_TITLE FROM TypeBooks", conn))
                 {
-                    if (Vobr.Items.Contains(Vobr13))
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-
-                    }
-                    else
-                    {
-                        Vobr.Items.Add(Vobr13);
+                        while (reader.Read())
+                        {
+                            string title = reader.GetString(0);
+                            if (!Vobr.Items.Contains(title))
+                            {
+                                Vobr.Items.Add(title);
+                            }
+                        }
                     }
                 }
             }
-            conn3.Close();
         }
 
         private void Ofzakaz_Click(object sender, RoutedEventArgs e)

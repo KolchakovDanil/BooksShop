@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BooksShop"
         mc:Ignorable="d"
-        Title="AdminEmployees" Height="450" Width="800"
+        Title="Редактор сотрудников" Height="450" Width="800"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     <Grid Background="Lavender">
@@ -34,7 +34,7 @@
                 FontWeight="Bold" Width="86" Height="34" Click="Bdel_Click"/>
 
         <TextBlock Name="TBsz" HorizontalAlignment="Left"  Margin="10,12,0,0" TextWrapping="Wrap" Text="Редактирование сотрудников" 
-            VerticalAlignment="Top" Height="44" Width="265" Foreground="Black" FontSize="19" Background="White"/>
+            VerticalAlignment="Top" Height="44" Width="303" Foreground="Black" FontSize="19" Background="White"/>
         <Button Name="Ofzakaz" Content="Добавить сотрудника" Visibility="Visible" HorizontalAlignment="Left" Margin="593,299,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
                 FontWeight="Bold" Width="139" Height="34" RenderTransformOrigin="0.88,0.574" Click="Ofzakaz_Click"/>
         <Button x:Name="Ozak" Visibility="Hidden" Content="Вернуться к добавлению" HorizontalAlignment="Left" Margin="568,366,0,0" VerticalAlignment="Top" FontSize="12" Background="White" BorderBrush="Black"
@@ -55,6 +55,12 @@
             </Button.Background>
         </Button>
         <Image  x:Name="Background"  Source="ImageBooks/LogoNoBack.png" Opacity="0.7" Margin="0,251,589,10" Stretch="UniformToFill"/>
+        <Button x:Name="btnHelp" Margin="266,13,475,367" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="О программе" Click="btnHelp_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="help.png" Stretch="Uniform"/>
+            </Button.Background>
+
+        </Button>
 
     </Grid>
 </Window>

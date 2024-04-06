@@ -269,36 +269,49 @@ namespace BooksShop
             }
             else
             {
-                string connectionString = ClassSql.GetConnSQL();
-                string query = "DELETE FROM Employees WHERE E_ID = @EmployeesId";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                MessageBoxResult result = MessageBox.Show("Вы уверены что хотите удалить данного сотрудника?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
                 {
-                    command.Parameters.AddWithValue("@EmployeesId", Convert.ToString(CSzak.SelectedItem));
+                    string connectionString = ClassSql.GetConnSQL();
+                    string query = "DELETE FROM Employees WHERE E_ID = @EmployeesId";
 
-                    try
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        CSzak.SelectedIndex = -1;
-                        Post.SelectedIndex = -1;
-                        vivodID();
-                        MessageBox.Show("Сотрудник удален");
+                        command.Parameters.AddWithValue("@EmployeesId", Convert.ToString(CSzak.SelectedItem));
+
+                        try
+                        {
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            CSzak.SelectedIndex = -1;
+                            Post.SelectedIndex = -1;
+                            vivodID();
+                            MessageBox.Show("Сотрудник удален");
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show("SQL Error: " + ex.Message);
+                        }
                     }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show("SQL Error: " + ex.Message);
-                    }
+                }
+                else if (result == MessageBoxResult.No)
+                {
+
                 }
             }
         }
-
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             Admin admin = new Admin();
             admin.Show();
             this.Close();
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("В данном окне происходит добавление, изменение и удаление данных о сотрудниках. " +
+                "Важно знать, что выбирая 'Должность' вы даете соответствующий доступ пользователю к программе!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

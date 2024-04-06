@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BooksShop"
         mc:Ignorable="d"
-        Title="AllOrders" Height="450" Width="997"
+        Title="Окно заказов" Height="450" Width="997"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
     

@@ -64,5 +64,12 @@ namespace BooksShop
         {
             MessageBox.Show("Это окно Администратора! Здесь вы можете добавлять, изменять и удалять информацию в базе данных.", "О программе", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void RedTovar_Click(object sender, RoutedEventArgs e)
+        {
+            Tovari tov = new Tovari();
+            tov.Show();
+            this.Close();
+        }
     }
 }

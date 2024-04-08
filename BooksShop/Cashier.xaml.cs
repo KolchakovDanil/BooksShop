@@ -373,29 +373,37 @@ namespace BooksShop
             }
             else
             {
-                string connectionString = ClassSql.GetConnSQL();
-                string query = "DELETE FROM Orderr WHERE O_ID = @OrderId";
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                MessageBoxResult result = MessageBox.Show("Вы уверены что хотите удалить данный заказ?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
                 {
-                    command.Parameters.AddWithValue("@OrderId", Convert.ToString(CSzak.SelectedItem));
+                    string connectionString = ClassSql.GetConnSQL();
+                    string query = "DELETE FROM Orderr WHERE O_ID = @OrderId";
 
-                    try
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        CSzak.SelectedIndex = -1;
-                        Vobr.SelectedIndex = -1;
-                        Vode.SelectedIndex = -1;
-                        imageBook.Source = null;
-                        vivodID();
-                        MessageBox.Show("Заказ удален");
+                        command.Parameters.AddWithValue("@OrderId", Convert.ToString(CSzak.SelectedItem));
+
+                        try
+                        {
+                            connection.Open();
+                            command.ExecuteNonQuery();
+                            CSzak.SelectedIndex = -1;
+                            Vobr.SelectedIndex = -1;
+                            Vode.SelectedIndex = -1;
+                            imageBook.Source = null;
+                            vivodID();
+                            MessageBox.Show("Заказ удален");
+                        }
+                        catch (SqlException ex)
+                        {
+                            MessageBox.Show("SQL Error: " + ex.Message);
+                        }
                     }
-                    catch (SqlException ex)
-                    {
-                        MessageBox.Show("SQL Error: " + ex.Message);
-                    }
+                }
+                else if (result == MessageBoxResult.No)
+                {
+
                 }
             }
         }
